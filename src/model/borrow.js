@@ -90,5 +90,46 @@ module.exports = {
         }
       );
     });
+  },
+  updateBorrowingStatus: (setData, id) => {
+    return new Promise((resolve, reject) => {
+      connection.query(
+        "UPDATE borrowing SET ? where borrow_id = ?",
+        [setData, id],
+        (err, res) => {
+          if (!err) {
+            resolve(res);
+          }
+          reject(new Error(err));
+        }
+      );
+    });
+  },
+  updateBorrowingDetail: (setData, id) => {
+    return new Promise((resolve, reject) => {
+      connection.query(
+        "UPDATE borrow_details SET ? where borrow_id = ?",
+        [setData, id],
+        (err, res) => {
+          if (!err) {
+            resolve(res);
+          }
+          reject(new Error(err));
+        }
+      );
+    });
+  },
+  bookStatusChange: (id, status) => {
+    return new Promise((resolve, reject) => {
+      connection.query(
+        `UPDATE books SET book_status = '${status}' where book_id = '${id}'`,
+        (err, res) => {
+          if (!err) {
+            resolve(res);
+          }
+          reject(new Error(err));
+        }
+      );
+    });
   }
 };

@@ -10,9 +10,9 @@ module.exports = {
   getAllBooks: async (req, res) => {
     try {
       const result = await getAllBooks();
-      return res.json(result);
+      return helper.response(res, 200, result);
     } catch (error) {
-      throw error;
+      return helper.response(res, 400, { message: "Terjadi Kesalahan" });
     }
   },
   insertBook: async (req, res) => {
@@ -20,7 +20,7 @@ module.exports = {
       const setData = {
         book_name: req.body.book_name,
         book_author: req.body.book_author,
-        book_status: 1
+        book_status: "TERSEDIA"
       };
 
       const result = await insertBook(setData);
