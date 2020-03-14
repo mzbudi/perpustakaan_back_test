@@ -1,7 +1,10 @@
 # perpustakaan_back_test
 
 ### Postman Documentation : 
-[Postman Web Link](https://web.postman.co/collections/10104517-053c9385-4e38-4d51-b1db-eeb7267be09f?version=latest&workspace=25e91d59-a40e-494b-86a7-05feab422e18)
+[Postman Web Link](https://documenter.getpostman.com/view/10104517/SzS1V9nY)
+
+### database on files :
+perpustakaan_test.sql
 
 ### Demo Account
 username : admin
