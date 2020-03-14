@@ -1,14 +1,17 @@
 const connection = require("../config/mysql");
 
 module.exports = {
-  getAllBooks: () => {
+  getAllBooks: searchName => {
     return new Promise((resolve, reject) => {
-      connection.query("SELECT * FROM books", (err, res) => {
-        if (!err) {
-          resolve(res);
+      connection.query(
+        `SELECT * FROM books WHERE book_name LIKE '%${searchName}%' `,
+        (err, res) => {
+          if (!err) {
+            resolve(res);
+          }
+          reject(new Error());
         }
-        reject(new Error());
-      });
+      );
     });
   },
 

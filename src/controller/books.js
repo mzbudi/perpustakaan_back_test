@@ -9,7 +9,9 @@ const helper = require("../helper");
 module.exports = {
   getAllBooks: async (req, res) => {
     try {
-      const result = await getAllBooks();
+      const searchName = req.query.searchName || "";
+      console.log(searchName);
+      const result = await getAllBooks(searchName);
       return helper.response(res, 200, result);
     } catch (error) {
       return helper.response(res, 400, { message: "Terjadi Kesalahan" });
