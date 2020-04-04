@@ -2,14 +2,14 @@ const {
   getAllMembers,
   deleteMember,
   updateMember,
-  createMember
+  createMember,
 } = require("../model/member");
 const helper = require("../helper");
 
 module.exports = {
   getAllMembers: async (req, res) => {
     try {
-      const searchName = req.body.searchName || "";
+      const searchName = req.query.searchName || "";
       const result = await getAllMembers(searchName);
       return helper.response(res, 200, result);
     } catch (error) {
@@ -30,7 +30,7 @@ module.exports = {
       const setData = {
         member_name: req.body.member_name,
         member_address: req.body.member_address,
-        member_gender: req.body.member_gender
+        member_gender: req.body.member_gender,
       };
       const member_id = req.params.member_id;
 
@@ -45,7 +45,7 @@ module.exports = {
       const setData = {
         member_name: req.body.member_name,
         member_address: req.body.member_address,
-        member_gender: req.body.member_gender
+        member_gender: req.body.member_gender,
       };
 
       await createMember(setData);
@@ -53,5 +53,5 @@ module.exports = {
     } catch (error) {
       return helper.response(res, 400, { message: "Terjadi Kesalahan" });
     }
-  }
+  },
 };
